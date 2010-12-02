@@ -107,7 +107,7 @@ module ActionView
           select_html << content_tag(:option, '', :value => '') + "\n" if @options[:include_blank]
           select_html << select_options_as_html.to_s
 
-          content_tag(:select, select_html, select_options) + time_unit(type).to_s + "\n"
+          (content_tag(:select, select_html.html_safe, select_options) + time_unit(type).to_s + "\n").html_safe
         end
         alias_method_chain :build_select, :jp_time_unit
 
